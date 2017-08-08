@@ -43,7 +43,6 @@ class MaterialTextField : UITextField
 		c = NSLayoutConstraint.constraints(withVisualFormat: "|-(0)-[label]", options: .alignAllFirstBaseline, metrics: nil, views: ["label": placeHolderLabel])
 		addConstraints(c);
 		addConstraint(placeHolderLabel.centerYAnchor.constraint(equalTo: centerYAnchor));
-		addConstraints(c);
 		
 		addSubview(underLineView);
 		underLineView.translatesAutoresizingMaskIntoConstraints = false;
