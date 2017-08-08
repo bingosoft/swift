@@ -64,7 +64,7 @@ class MaterialTextField : UITextField
 
 		UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
 			if (self.text?.isEmpty ?? true) {
-        		self.placeHolderLabel.layer.setAffineTransform(t);
+				self.placeHolderLabel.layer.setAffineTransform(t);
 			}
 			self.underLineView.backgroundColor = UIColor.white;
 		});
@@ -74,9 +74,9 @@ class MaterialTextField : UITextField
 	func didEndEditing() {
 		UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
 			if (self.text?.isEmpty ?? true) {
-        		self.placeHolderLabel.layer.setAffineTransform(.identity);
+				self.placeHolderLabel.layer.setAffineTransform(.identity);
 			}
-    		self.underLineView.backgroundColor = UIColor.white.withAlphaComponent(0.6);
+			self.underLineView.backgroundColor = UIColor.white.withAlphaComponent(0.6);
 		})
 	}
 	
