@@ -2,7 +2,7 @@
 //  MaterialTextField.swift
 //
 //  Created by Andrey Yarosh on 07/08/2017.
-//  https://github.com/bingosoft/swift/MaterialTextField
+//  https://github.com/bingosoft/swift/tree/master/MaterialTextField
 //
 
 import Foundation
