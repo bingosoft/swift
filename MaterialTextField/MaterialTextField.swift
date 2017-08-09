@@ -32,22 +32,20 @@ class MaterialTextField : UITextField
 	
 	required init?(coder aDecoder: NSCoder) {
 		super.init(coder: aDecoder);
-		var c: [NSLayoutConstraint]!
 		clipsToBounds = false;
-		
-		addSubview(placeHolderLabel);
 		tintColor = textColor;
 		placeholderColor = .gray;
+		
+		addSubview(placeHolderLabel);
 		placeHolderLabel.translatesAutoresizingMaskIntoConstraints = false;
 		placeHolderLabel.font = font;
-		c = NSLayoutConstraint.constraints(withVisualFormat: "|-(0)-[label]", options: .alignAllFirstBaseline, metrics: nil, views: ["label": placeHolderLabel])
-		addConstraints(c);
+		addConstraint(placeHolderLabel.leadingAnchor.constraint(equalTo: leadingAnchor));
 		addConstraint(placeHolderLabel.centerYAnchor.constraint(equalTo: centerYAnchor));
 		
 		addSubview(underLineView);
 		underLineView.translatesAutoresizingMaskIntoConstraints = false;
 		underLineView.backgroundColor = UIColor.white.withAlphaComponent(0.6);
-		c = NSLayoutConstraint.constraints(withVisualFormat: "|[v]|", options: .alignAllFirstBaseline, metrics: nil, views: ["v": underLineView])
+		var c = NSLayoutConstraint.constraints(withVisualFormat: "|[v]|", options: .alignAllFirstBaseline, metrics: nil, views: ["v": underLineView])
 		addConstraints(c);
 		c = NSLayoutConstraint.constraints(withVisualFormat: "V:[v(2)]-(-3)-|", options: .alignAllFirstBaseline, metrics: nil, views: ["v": underLineView])
 		addConstraints(c);
