@@ -14,10 +14,10 @@ async {
 ```swift
 func loadImageAsync(_ url: String) -> AsyncTask<UIImage?>
 {
-	return AsyncTask<UIImage?> {
-		guard let data = try? Data(contentsOf: URL(string: url)!) else { return nil }
-		return UIImage(data: data);
-	}
+    return AsyncTask<UIImage?> {
+        guard let data = try? Data(contentsOf: URL(string: url)!) else { return nil }
+        return UIImage(data: data);
+    }
 }
 ```
 ### Method call example
