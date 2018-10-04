@@ -13,6 +13,34 @@ class MaterialTextField : UITextField
 {
 	private var placeHolderLabel = UILabel();
 	private var underLineView = UIView();
+	
+	private (set) var placeholderMinimized = false {
+		didSet {
+			guard (oldValue != placeholderMinimized) else { return }
+			
+			let transform: CGAffineTransform!
+			
+			if (placeholderMinimized) {
+				let k: CGFloat = 0.7;
+				let dx = placeHolderLabel.frame.width * (1 - k) / 2;
+				transform = CGAffineTransform(translationX: -dx, y: -20).scaledBy(x: k, y: k);
+			} else {
+				transform = .identity;
+			}
+			
+			UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
+				self.placeHolderLabel.layer.setAffineTransform(transform);
+			})
+		}
+	}
+
+	private var isActive = false;
+
+	override var text: String? {
+		didSet {
+			updateState();
+		}
+	}
 
 	@IBInspectable override var placeholder: String! {
 		set {
@@ -29,7 +57,7 @@ class MaterialTextField : UITextField
 			placeHolderLabel.textColor = placeholderColor;
 		}
 	}
-	
+
 	required init?(coder aDecoder: NSCoder) {
 		super.init(coder: aDecoder);
 		clipsToBounds = false;
@@ -52,29 +80,30 @@ class MaterialTextField : UITextField
 		
 		addTarget(self, action: #selector(didStartEditing), for: .editingDidBegin);
 		addTarget(self, action: #selector(didEndEditing), for: .editingDidEnd);
+		addTarget(self, action: #selector(editingChanged), for: .editingChanged);
 	}
-	
-	func didStartEditing() {
-		let k: CGFloat = 0.7;
-		let dx = placeHolderLabel.frame.width * (1 - k) / 2;
-		let t = CGAffineTransform(translationX: -dx, y: -20).scaledBy(x: k, y: k);
 
-		UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
-			if (self.text?.isEmpty ?? true) {
-				self.placeHolderLabel.layer.setAffineTransform(t);
-			}
+	@objc func didStartEditing() {
+		UIView.animate(withDuration: 0.3) {
 			self.underLineView.backgroundColor = UIColor.white;
-		});
+		}
+		isActive = true;
+		updateState();
 	}
-	
-	
-	func didEndEditing() {
-		UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
-			if (self.text?.isEmpty ?? true) {
-				self.placeHolderLabel.layer.setAffineTransform(.identity);
-			}
+
+	@objc func didEndEditing() {
+		UIView.animate(withDuration: 0.3) {
 			self.underLineView.backgroundColor = UIColor.white.withAlphaComponent(0.6);
-		})
+		}
+		isActive = false;
+		updateState();
 	}
-	
+
+	@objc func editingChanged() {
+		updateState();
+	}
+
+	func updateState() {
+		placeholderMinimized = isActive || !text!.isEmpty
+	}
 }
