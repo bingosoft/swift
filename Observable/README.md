@@ -4,7 +4,7 @@ Implementation of *Observable* design pattern in Swift. Don't holds strong refer
 ## How to use:
 ```swift
 class MyObject {
-    let changesDidCompleted = Observable<String>()
+	let changesDidCompleted = Observable<String>()
 	
 	func performChanges(with param: String) {
 		// very important changes
