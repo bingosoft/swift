@@ -1,10 +1,10 @@
 # Observable
 
-Implementation of *Observable* design pattern in Swift. Don't holds strong refernce on observer. Automatically cleans observers list, don't sends events to dead objects
+Implementation of *Observable* design pattern in Swift. Don't holds strong reference on observer. Automatically cleans observers list after observer has been deallocated, don't sends events to dead objects
 ## How to use:
 ```swift
 class MyObject {
-    let changesDidCompleted = Observable<String>()
+	let changesDidCompleted = Observable<String>()
 	
 	func performChanges(with param: String) {
 		// very important changes
