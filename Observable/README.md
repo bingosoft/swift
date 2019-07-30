@@ -37,12 +37,12 @@ observer.subscribe(on: obj)
 obj.performChanges(with:"Test 1")
 
 observer.unsubscribe()
-obj.performChanges(with:"Test 2") // on output
+obj.performChanges(with:"Test 2") // no output
 
 observer.subscribe(on: obj)
 obj.performChanges(with:"Test 3")
 
 observer = nil
-obj.performChanges(with: "Test 4") // on output
+obj.performChanges(with: "Test 4") // no output
 ```
 Also, you can pass multiple params using a typle as the template parameter
