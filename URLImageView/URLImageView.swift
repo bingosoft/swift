@@ -1,6 +1,6 @@
 //
 //  URLImageView.swift
-//  //
+//
 //  Created by Andrey Yarosh on 3/22/19.
 //  Copyright © 2019 https://github.com/bingosoft/swift/
 //
@@ -46,12 +46,12 @@ class URLImageView: UIImageView, URLImageViewInput {
 		DispatchQueue.global().async {
 			if let semaphore = URLImageView.tasks[url] {
 				semaphore.wait()
-				semaphore.signal()
 
 				if let image = URLImageView.imageCache.object(forKey: fileName) {
 					self.reload(image: image, for: url)
 				}
 
+				semaphore.signal()
 				return
 			}
 
