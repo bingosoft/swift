@@ -56,10 +56,10 @@ class URLImageView: UIImageView, URLImageViewInput {
 			}
 
 			URLImageView.queue.async(flags: .barrier) {
-    			URLImageView.tasks[url] = DispatchSemaphore(value: 0)
+				URLImageView.tasks[url] = DispatchSemaphore(value: 0)
 			}
 
-    		let image = self.readLocal(fullPath) ?? self.readRemote(url, fullPath)
+			let image = self.readLocal(fullPath) ?? self.readRemote(url, fullPath)
 
 			if let image = image {
 				URLImageView.imageCache.setObject(image, forKey: fileName)
@@ -67,9 +67,9 @@ class URLImageView: UIImageView, URLImageViewInput {
 			}
 
 			URLImageView.queue.async(flags: .barrier) {
-    			let semaphore = URLImageView.tasks[url]
-    			URLImageView.tasks[url] = nil
-    			semaphore?.signal()
+				let semaphore = URLImageView.tasks[url]
+				URLImageView.tasks[url] = nil
+				semaphore?.signal()
 			}
 		}
 	}
