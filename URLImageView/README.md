@@ -8,7 +8,7 @@ A yet another `UIImageView` that can load images using `URL`
 - Save already loaded images in `NSCache`.
 - Persist already loaded images in app caches directory and restore it back after app relaunch
 - Ability to set placeholder while image is loading
-- Create only one network request when eventually trying to load 1000 images with the same URL at the same time. Other copies are waiting the result
+- Create only one network request when trying to load 1000 images with the same URL at the same time. Other copies are waiting the network request result
 
 ### How to use
 ```swift
