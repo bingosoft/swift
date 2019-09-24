@@ -14,4 +14,4 @@ This error often wasted my time, so I decided to use native solution,  that does
 
 ## Usage example
 
-It&apos;s still mostly the same like in [Swinject](https://github.com/Swinject/Swinject), except advanced rarely used features
+It&apos;s still mostly the same like in [Swinject](https://github.com/Swinject/Swinject#basic-usage), except advanced rarely used features
