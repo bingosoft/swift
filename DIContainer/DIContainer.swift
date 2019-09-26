@@ -1,9 +1,8 @@
 //
 //  DIContainer.swift
-//  MultiScreen
 //
 //  Created by Andrey Yarosh on 9/24/19.
-//  Copyright © 2019 GS Labs. All rights reserved.
+//  Copyright © https://github.com/bingosoft/. All rights reserved.
 //
 
 import Foundation
