@@ -11,6 +11,7 @@ This error often wasted my time, so I decided to use native solution,  that does
 - Support the same interface like `Swinject`, so you don't need to rewrite an existing `Swinject` based DI Container
 - Support `transient` aka temporary and `container` aka singleton object scopes
 - Don't require each time recompilation for module compatibility
+- Thread-safe registreing and resolving of dependencies
 
 ## Usage example
 
