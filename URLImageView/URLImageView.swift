@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 protocol URLImageViewInput {
 	var url: String! { get set }
